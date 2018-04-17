@@ -171,7 +171,7 @@ install_nrpe() {
 
     sed -i '/^#cfg_dir.*servers$/s/^#//' /usr/local/nagios/etc/nagios.cfg
 
-    mkdir  /usr/local/nagios/etc/servers 2>  $install_log_dir/nrpe_config_log
+    mkdir  /usr/local/nagios/etc/servers 2>  $install_log_dir/nrpe_config_log &&cp -rp nrpe_install/default /usr/local/nagios/etc/servers/
     check_nrpe=$(grep "nrpe$" /usr/local/nagios/etc/objects/commands.cfg |awk '{print $2}')
     if [ "$check_nrpe" != "check_nrpe" ]; then
         {
